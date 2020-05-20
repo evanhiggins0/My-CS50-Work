@@ -3,56 +3,42 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+bool check_valid_key(string s);
 
 int main(int argc, string argv[])
 {
-    if (argc != 2)
+    if (argc != 2 || !check_valid_key(argv[1]))
     {
-        printf("Usage: ./caesar key\n");
+        printf("Usage: ./caesar key");
         return 1;
     }
-    // atoi converts ascii chars to ints
-    int k = atoi(argv[1]);
-
-    if (k <= 0)
-    {
-        printf("Key must be positive number\n");
-        return 1;
-    }
-
-    if (k >= 1)
-    {
-        printf("Success\n");
-    }
+    // atoi turns ascii char into int
+    int key = atoi(argv[1]);
 
     string plaintext = get_string("plaintext: ");
 
     printf("ciphertext: ");
-
     for (int i = 0, len = strlen(plaintext); i < len; i++)
     {
-        // character classicication function
-        if islower(plaintext[i])
+        char c = plaintext[i];
+        if (isalpha(c)) // checks to see if input is alphabetic character
         {
-            // ci = (pi + k) % 26
-            printf("%c", (plaintext[i] - 'a' + k) % 26 + 'a');
+            char m = 'A';
+            if (islower(c)) // checks to see if character is lowercase
+                m = 'a';
+            printf("%c", (c - m + key) % 26 + m);
         }
-        // character classification function
-        else if (isupper(plaintext[i]))
-        {
-            // adapted formula for uppercase characters
-            printf("%c", (plaintext[i] - 'A' + k) % 26 + 'A');
-        }
-
         else
-        {
-            printf("%c", plaintext[i]);
-        }
-
+            printf("%c", c);
 
     }
     printf("\n");
-    return 0;
-
 }
 
+bool check_valid_key(string s)
+{
+    for (int i = 0, len = strlen(s); i < len; i++)
+            if (!isdigit(s[i]))
+                return false;
+    return true;
+}
