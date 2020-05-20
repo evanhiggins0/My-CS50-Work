@@ -22,24 +22,31 @@ int main(int argc, string argv[])
 
     string plaintext = get_string("plaintext: ");
 
+    printf("ciphertext: ");
+
     for (int i = 0, len = strlen(plaintext); i < len; i++)
     {
         // character classicication function
         if islower(plaintext[i])
         {
             // ci = (pi + k) % 26
-            printf("ciphertext: %c", (plaintext[i] - 'a' + k) % 26 + 'a');
+            printf("%c", (plaintext[i] - 'a' + k) % 26 + 'a');
         }
         // character classification function
         else if (isupper(plaintext[i]))
         {
             // adapted formula for uppercase characters
-            printf("ciphertext: %c", (plaintext[i] - 'A' + k) % 26 + 'A');
+            printf("%c", (plaintext[i] - 'A' + k) % 26 + 'A');
         }
 
         else
         {
-            printf("ciphertext: %c", plaintext[i]);
+            printf("%c", plaintext[i]);
         }
+
+
     }
+    printf("\n");
+
 }
+
