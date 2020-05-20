@@ -8,7 +8,7 @@ int main(int argc, string argv[])
 {
     if (argc != 2)
     {
-        printf("Usage: ./caesar k\n");
+        printf("Usage: ./caesar key\n");
         return 1;
     }
     // atoi converts ascii chars to ints
@@ -18,6 +18,11 @@ int main(int argc, string argv[])
     {
         printf("Key must be positive number\n");
         return 1;
+    }
+
+    if (k > 0)
+    {
+        printf("Success\n");
     }
 
     string plaintext = get_string("plaintext: ");
@@ -47,6 +52,7 @@ int main(int argc, string argv[])
 
     }
     printf("\n");
+    return 0;
 
 }
 
