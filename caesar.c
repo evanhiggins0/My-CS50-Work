@@ -28,18 +28,18 @@ int main(int argc, string argv[])
         if islower(plaintext[i])
         {
             // ci = (pi + k) % 26
-            printf("ciphertext: %c\n", (plaintext[i] - 'a' + k) % 26 + 'a');
+            printf("ciphertext: %c", (plaintext[i] - 'a' + k) % 26 + 'a');
         }
         // character classification function
         else if (isupper(plaintext[i]))
         {
             // adapted formula for uppercase characters
-            printf("ciphertext: %c\n", (plaintext[i] - 'A' + k) % 26 + 'A');
+            printf("ciphertext: %c", (plaintext[i] - 'A' + k) % 26 + 'A');
         }
 
         else
         {
-            printf("ciphertext: %c\n", plaintext[i]);
+            printf("ciphertext: %c", plaintext[i]);
         }
     }
 }
