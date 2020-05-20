@@ -9,18 +9,18 @@ int main(int argc, string argv[])
     if (argc != 2)
     {
         printf("Usage: ./caesar key\n");
-        return 1;
+        return 0;
     }
     // atoi converts ascii chars to ints
     int k = atoi(argv[1]);
 
-    if (k < 0)
+    if (k <= 0)
     {
         printf("Key must be positive number\n");
         return 1;
     }
 
-    if (k > 0)
+    if (k >= 1)
     {
         printf("Success\n");
     }
